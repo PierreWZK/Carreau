@@ -1,14 +1,38 @@
 # Carreau
 
-Un jeu CSS quotidien. Chaque jour, trois défis : reproduis la cible en HTML/CSS. Jour 25 du défi « 30 jours, 30 projets ».
+**Un défi CSS par jour.** Une cible s'affiche, tu la reproduis en HTML et en CSS. Trois niveaux chaque jour, plus durs le dimanche.
+
+**Jouer : [carreau.projectp.fr](https://carreau.projectp.fr)**
+
+Jour 25 du défi « 30 jours, 30 projets ».
+
+| Accueil | Choix du niveau | Un défi (niveau 1) |
+| --- | --- | --- |
+| ![Accueil](docs/apercu-accueil.png) | ![Choix du niveau](docs/apercu-jouer.png) | ![Un défi](docs/apercu-defi.png) |
+
+## Pourquoi
+
+Avec l'arrivée des IA, on ne prend plus le temps de retenir les bases : centrer une div, `flex-wrap`, animer un rond. On demande, ça marche, on oublie. Un petit rafraîchissement de mémoire ne fait pas de mal : Carreau en sert un chaque jour, sans IA.
+
+## Le jeu
 
 - **Niveau 1** : HTML fourni, éditeur CSS, aperçu en direct.
 - **Niveau 2** : éditeurs HTML et CSS, aperçu en direct.
 - **Niveau 3** : éditeurs HTML et CSS, sans aperçu avant validation, 5 essais.
 - Le dimanche, les trois défis sont plus durs.
-- Score (essais, indice), étoiles « CSS golf », série de jours, partage façon Wordle, archive des jours passés. Tout est stocké dans le navigateur (`localStorage`).
+- Score (essais, indice), étoiles « CSS golf », série de jours, résumé à partager (avec le lien du site), archive des jours passés.
+- Pas de compte : tout est stocké dans le navigateur (`localStorage`).
 
-La validation compare, instant par instant, les positions et les styles des éléments du joueur avec ceux de la cible, dans un iframe isolé (`sandbox`, CSP sans réseau ni script du joueur).
+La validation compare, instant par instant, les positions, tailles et arrondis des éléments du joueur avec ceux de la cible, dans un iframe isolé (`sandbox`, CSP sans réseau). Les couleurs ne comptent pas. Aux niveaux 2 et 3, deux validations doivent être espacées de 5 secondes.
+
+## Pages
+
+| Route | Contenu |
+| --- | --- |
+| `/` | Vitrine : à quoi ça sert, principe, niveaux, aperçu animé, bouton « Jouer » |
+| `/jouer` | Les 3 défis du jour et la série |
+| `/jouer/1`, `/jouer/2`, `/jouer/3` | Un défi |
+| `/archive` | Rejouer les jours passés (ne compte pas pour la série) |
 
 ## Développer
 
@@ -28,6 +52,6 @@ Les défis sont écrits à la main dans `lib/defis/` (20 par niveau, dont 4 « d
 
 ## Déploiement
 
-`Dockerfile` en trois étapes (sortie Next.js `standalone`), port 3000. Déployé sur Coolify, branche `master`.
+`Dockerfile` en trois étapes (sortie Next.js `standalone`), port 3000. Déployé sur Coolify, branche `master`, à l'adresse [carreau.projectp.fr](https://carreau.projectp.fr).
 
 Le suivi détaillé du projet (demandes, décisions, tests, échecs) est dans `CLAUDE_CONTEXTE.md`.
