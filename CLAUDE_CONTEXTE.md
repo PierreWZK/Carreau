@@ -98,6 +98,12 @@ Décisions prises par Claude (à valider) :
   - Partage : le résumé copié se termine par `https://carreau.projectp.fr` (`lib/site.ts`, `URL_SITE`). Test mis à jour.
   - Aperçu du site : métadonnées Open Graph et Twitter dans `app/layout.tsx` (`metadataBase`), image 1200×630 générée par `app/opengraph-image.tsx` (`next/og`). Vérifié : balises présentes dans le HTML, image servie en PNG. Mon choix : j'ai compris « preview » comme l'aperçu quand on partage le lien, en plus de l'aperçu du jeu dans la page.
   - Vérifié : 19 tests, tsc, lint, build OK ; accueil à 375 px ; aperçu animé visible ; texte de partage avec le lien. Non vérifié : l'affichage réel de l'aperçu de lien dans une messagerie (il demande le site en ligne), image Twitter dédiée non créée.
+- Demande : accueil plus accueillant, héro avec vrai CTA, page « Jouer », README, vitrine à jour (branche `feat/accueil-hero-jouer`) :
+  - Accueil `/` refait : héro (formes, titre, accroche, date, gros bouton « Jouer au défi du jour », « Gratuit, sans compte, en 5 minutes »), principe en 3 étapes, trois niveaux, aperçu animé, « À quoi ça sert ? », « Et aussi », second CTA, pied de page (adresse du site, GitHub, archive, jour 25 du défi).
+  - Nouvelle page `/jouer` (`app/jouer/page.tsx`) : les 3 niveaux du jour avec série et statuts (`CartesNiveaux`), lien vers l'archive. Les cartes de niveaux ne sont plus sur l'accueil.
+  - README : adresse du site, 3 captures dans `docs/` (accueil, choix du niveau, un défi, prises à 390×844), pourquoi, jeu, tableau des routes, développer, déploiement.
+  - Entrée `carreau` ajoutée à `.claude/launch.json` (port 3025).
+  - Vérifié : 19 tests, tsc, lint, build OK (`/jouer` statique) ; accueil à 375 px sans défilement horizontal, bouton de 52 px de haut ; clic sur le CTA ouvre `/jouer`. Non vérifié : desktop large, autres navigateurs.
 - Étape 5 : `create-next-app` avait créé un dépôt git local avec son propre commit initial. Supprimé (jamais poussé) et remplacé par un dépôt initialisé sur le commit initial distant, pour que `master` distant et local aient la même histoire.
 - Étape 5 : l'API Coolify refuse le tiret long « — » dans la description d'un projet (422). Description sans tiret long.
 - Étape 5 : Docker n'est pas installé sur cette machine, l'image n'a donc pas été construite. À la place : `NEXT_OUTPUT=standalone npm run build`, puis exécution de `server.js` avec `public` et `.next/static` copiés, comme dans le Dockerfile.
