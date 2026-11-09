@@ -67,7 +67,11 @@ Décisions prises par Claude (à valider) :
   - Indice : bouton « Indice (−30 points) » dans `DefiJeu`. Une fois un défi terminé (réussi ou raté), il n'est plus rejouable : on voit la carte de résultat et la solution (`CarteResultat.tsx`). Le code tapé n'est pas sauvegardé.
   - Archive : page `/archive` (jours du 2026-11-09 à hier, `DATE_DEBUT` dans `lib/jour.ts`). Un jour passé se joue sur `/jouer/N?date=AAAA-MM-JJ` avec un bandeau « ne compte pas pour ta série ». Une date invalide, future ou antérieure au début est ignorée (défi du jour).
   - Accueil (`CartesNiveaux.tsx`) : série en cours, statut « Réussi / Raté » par niveau, lien vers l'archive.
-- Étape 5 : **pas commencée**.
+- Étape 5 : **en attente de la fusion de la PR** (déploiement pas encore lancé) :
+  - Dépôt public https://github.com/PierreWZK/carreau, branche principale `master` (créée avec le dépôt, un seul commit initial). Le travail est sur `feat/carreau-v1`, PR https://github.com/PierreWZK/carreau/pull/1 (5 commits groupés par étape, dans l'état final des fichiers : un commit ne se construit pas forcément seul). L'utilisateur fusionne.
+  - `Dockerfile` en trois étapes (`npm ci`, `npm run build` avec `NEXT_OUTPUT=standalone`, exécution `node server.js`, port 3000), `.dockerignore`, `next.config.ts` avec `output: "standalone"` conditionnel.
+  - Coolify (`https://coolify.projectp.fr`, API) : projet « Carreau » `salqqc8yhjrefwggkpxso29s`, app « Carreau » `03ebs30yndhjcsbakqq9ixmg` (GitHub app `projectp-github`, dépôt `PierreWZK/carreau`, branche `master`, Dockerfile, port 3000, domaine `https://carreau.projectp.fr`). **Créée sans déploiement** : `master` ne contient pas encore le code.
+  - Reste : fusionner la PR, lancer le déploiement (API Coolify `/deploy`, en POST), vérifier `https://carreau.projectp.fr`.
 - Dépôt git local créé (branche `master`, commit initial généré par create-next-app). Pas de push.
 
 **Point ouvert :** le dossier `day-25-connect-four` existe déjà dans `30DaysProjects` (dépôt git, `CAHIER_DES_CHARGES.md`). Ce projet n'est pas touché. Le projet Carreau est créé dans `day-25-carreau`. Confirmer ce choix.
@@ -85,6 +89,10 @@ Décisions prises par Claude (à valider) :
 - Étape 4 : la sauvegarde qui suit une partie remplaçait l'écran en cours par la carte « déjà jouée » (le résultat devenait une prop). Corrigé : `DefiJeu` fige `deja` au montage.
 - Étape 4 : le test unitaire du golf avait un cas à 1 étoile qui donnait en réalité 2 (rapport 1,58 avec le HTML compté). Cas du test corrigé, pas la règle.
 - Étape 4 : Playwright, avec l'horloge simulée, affiche « Blocked script execution in 'about:srcdoc' » dans la console : c'est le script d'horloge de Playwright injecté dans les iframes sans `allow-scripts`. Ce n'est pas un bug du jeu (0 erreur sans horloge simulée).
+- Étape 5 : `create-next-app` avait créé un dépôt git local avec son propre commit initial. Supprimé (jamais poussé) et remplacé par un dépôt initialisé sur le commit initial distant, pour que `master` distant et local aient la même histoire.
+- Étape 5 : l'API Coolify refuse le tiret long « — » dans la description d'un projet (422). Description sans tiret long.
+- Étape 5 : Docker n'est pas installé sur cette machine, l'image n'a donc pas été construite. À la place : `NEXT_OUTPUT=standalone npm run build`, puis exécution de `server.js` avec `public` et `.next/static` copiés, comme dans le Dockerfile.
+- Étape 5 : `/jouer/9` (niveau inexistant) répond 200 au lieu de 404 avec Cache Components : la page appelle `notFound()` après le début du streaming. Contenu « introuvable » affiché, statut HTTP non corrigé.
 - `node --test lib/` ne marche pas sur Node 22 : le script utilise le glob `lib/**/*.test.ts`.
 - Piloter CodeMirror par `.cm-content.cmView.view` n'a pas marché. Les tests dans le navigateur passent par de vraies frappes.
 
@@ -105,6 +113,8 @@ Décisions prises par Claude (à valider) :
 - Étape 3, Playwright à 375×812 : `/jouer/1` refuse le CSS de départ, puis accepte la solution tapée (« Bravo, c'est identique ! »). `/jouer/3` s'affiche avec la cible et le quadrillage.
 - Étape 4 : `npm test` 18 tests OK (score, golf, série, dates et archive, lecture du stockage, texte de partage). `tsc`, lint, build OK (routes `/`, `/archive`, `/jouer/[niveau]`).
 - Étape 4, Playwright à 375×812 sur le build de production : niveau 1 avec indice (message, essai raté puis réussi : score 60 / 100, 3 étoiles, sauvegarde `enDirect: true`), résumé de partage correct, rechargement de la page : carte de résultat sans éditeur, accueil avec « Série : 1 jour » et « ✓ Réussi », niveau 3 raté après 5 essais (score 0, solution ouverte). Avec l'horloge simulée au 2026-11-12 : série à 0, archive avec 3 jours et les statuts ✓ / ✗, bandeau d'archive, date invalide ignorée, défi d'archive réussi enregistré avec `enDirect: false` sans lancer la série.
+- Étape 5 : build `standalone` lancé hors Docker (port 3100) : `/`, `/archive`, `/jouer/1`, `/jouer/3` et un fichier CSS statique répondent 200. Pas de CI GitHub configurée (aucun check sur la PR).
+- Non testé à l'étape 5 : l'image Docker, le déploiement Coolify, le domaine `carreau.projectp.fr` (DNS et certificat).
 - Non testé à l'étape 4 : bouton « Copier » (presse-papiers) réel, partage sur téléphone, navigation privée (stockage refusé), deux onglets ouverts en même temps, série sur plusieurs vrais jours, changement d'heure.
 - Non testé à l'étape 3 : chaque défi résolu à la main par un humain (seules les solutions de référence sont vérifiées), le niveau 2 et le niveau 3 joués en entier, les autres solutions possibles d'un même défi (une solution valide mais différente peut être refusée), Safari/Firefox, vrai téléphone, changement de jour pendant une partie, le dimanche (jour dur) à l'écran.
 - Non testé à l'étape 2 : niveau 2 complet, animation avec une mauvaise courbe (`linear`), erreurs de syntaxe CSS/HTML, très petits écrans (< 356 px, la scène défile), Safari/Firefox, jeu au clavier mobile réel.
