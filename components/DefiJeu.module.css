@@ -1,0 +1,98 @@
+.defi {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.titre {
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.dur {
+  display: inline-block;
+  margin: 4px 0;
+  padding: 2px 10px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--papier);
+  background: var(--vert-foncé);
+  border-radius: 999px;
+}
+
+.bloc {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.etiquette {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.onglets {
+  display: flex;
+  gap: 8px;
+}
+
+.onglet,
+.valider {
+  min-height: 44px;
+  padding: 0 16px;
+  font: inherit;
+  font-weight: 700;
+  color: var(--vert-foncé);
+  background: #f4f5ee;
+  border: 2px solid var(--vert-foncé);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.onglet[aria-pressed="true"] {
+  background: var(--vert-clair);
+}
+
+.valider {
+  background: var(--vert-foncé);
+  color: var(--papier);
+  box-shadow: 3px 3px 0 var(--vert-clair);
+}
+
+.onglet:disabled,
+.valider:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+}
+
+.indice {
+  padding: 12px 16px;
+  background: var(--vert-clair);
+  border: 2px solid var(--vert-foncé);
+  border-radius: 12px;
+}
+
+.vide {
+  padding: 16px;
+  border: 2px dashed var(--vert-foncé);
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.message {
+  min-height: 1.5em;
+  font-weight: 600;
+}
+

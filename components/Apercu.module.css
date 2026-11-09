@@ -1,0 +1,31 @@
+/* Sur écran très étroit (< 356px), la scène défile au lieu d'être réduite. */
+.defilement {
+  overflow-x: auto;
+}
+
+/* Quadrillage de 20 px par-dessus la scène : sert de règle pour estimer les distances. */
+.cadre {
+  position: relative;
+  width: 324px;
+  height: 244px;
+  border: 2px solid var(--vert-foncé);
+  border-radius: 8px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.cadre::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(46, 61, 40, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(46, 61, 40, 0.12) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.iframe {
+  display: block;
+  border: 0;
+}
