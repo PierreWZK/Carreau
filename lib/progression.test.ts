@@ -71,4 +71,6 @@ test("partage : emojis par niveau, détail, points et série", () => {
   assert.equal(lignes[3], "⬜ Niveau 2");
   assert.equal(lignes[4], "🟥 Niveau 3 · raté");
   assert.equal(lignes[5], "100 points · série de 2 jours");
+  assert.equal(lignes[6], "https://carreau.projectp.fr");
+  assert.equal(lignes.length, 7);
 });

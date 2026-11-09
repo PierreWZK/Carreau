@@ -2,73 +2,58 @@
   width: 100%;
   max-width: 640px;
   margin: 0 auto;
-  padding: 24px var(--gouttiere) 48px;
+  padding: 24px var(--gouttiere) 64px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 32px;
 }
 
 .entete {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
 }
 
 .titre {
-  font-size: 2.25rem;
+  font-size: 2.75rem;
   font-weight: 800;
   letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
-.date {
-  font-size: 0.95rem;
-  text-transform: capitalize;
-  opacity: 0.8;
+.accroche {
+  margin-top: 8px;
+  font-size: 1.15rem;
+  line-height: 1.4;
 }
 
-.intro {
-  font-size: 1rem;
-}
-
-.liste {
-  list-style: none;
+.section {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.carte {
-  text-decoration: none;
-  color: inherit;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 16px;
-  background: #f4f5ee;
-  border: 2px solid var(--vert-foncé);
-  border-radius: 12px;
-  box-shadow: 4px 4px 0 var(--vert-clair);
-}
-
-.numero {
-  flex: 0 0 auto;
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--vert-clair);
+.sousTitre {
+  font-size: 1.35rem;
   font-weight: 800;
 }
 
-.carteTitre {
-  display: block;
-  font-size: 1.1rem;
-  font-weight: 700;
+.section code {
+  padding: 1px 6px;
+  font-size: 0.9em;
+  background: #f4f5ee;
+  border: 1px solid var(--vert-clair);
+  border-radius: 6px;
 }
 
-.carteAide {
-  display: block;
+.points {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-left: 20px;
+}
+
+.legende {
   font-size: 0.9rem;
   opacity: 0.85;
 }
@@ -79,6 +64,6 @@
   }
 
   .titre {
-    font-size: 3rem;
+    font-size: 3.5rem;
   }
 }

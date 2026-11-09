@@ -93,6 +93,11 @@ Décisions prises par Claude (à valider) :
   - La validation ignore les couleurs (fond, bordure, couleur du texte). Seules comptent la forme, la position, la taille, l'arrondi, l'opacité et la présence de texte. Test ajouté dans `lib/rendu.test.ts`.
   - Niveaux 2 et 3 : après un appui sur Valider, le bouton reste bloqué 5 s (« Attends N s »). Niveau 1 : pas de délai.
   - Vérifié dans le navigateur (build de production) : « Valider » → « Attends 5 s » → décompte → « Valider » après 5 s.
+- Demande : vitrine, lien de partage, aperçu du site (branche `feat/vitrine-partage-apercu`) :
+  - Vitrine : l'accueil `/` explique l'utilité du site (avec l'arrivée des IA on ne prend plus le temps de retenir les bases, un petit rafraîchissement de mémoire ne fait pas de mal), puis les défis du jour, le fonctionnement, et un aperçu du jeu (cible animée du niveau 3 « Va-et-vient »). Mon choix : pas de page séparée, la vitrine est l'accueil.
+  - Partage : le résumé copié se termine par `https://carreau.projectp.fr` (`lib/site.ts`, `URL_SITE`). Test mis à jour.
+  - Aperçu du site : métadonnées Open Graph et Twitter dans `app/layout.tsx` (`metadataBase`), image 1200×630 générée par `app/opengraph-image.tsx` (`next/og`). Vérifié : balises présentes dans le HTML, image servie en PNG. Mon choix : j'ai compris « preview » comme l'aperçu quand on partage le lien, en plus de l'aperçu du jeu dans la page.
+  - Vérifié : 19 tests, tsc, lint, build OK ; accueil à 375 px ; aperçu animé visible ; texte de partage avec le lien. Non vérifié : l'affichage réel de l'aperçu de lien dans une messagerie (il demande le site en ligne), image Twitter dédiée non créée.
 - Étape 5 : `create-next-app` avait créé un dépôt git local avec son propre commit initial. Supprimé (jamais poussé) et remplacé par un dépôt initialisé sur le commit initial distant, pour que `master` distant et local aient la même histoire.
 - Étape 5 : l'API Coolify refuse le tiret long « — » dans la description d'un projet (422). Description sans tiret long.
 - Étape 5 : Docker n'est pas installé sur cette machine, l'image n'a donc pas été construite. À la place : `NEXT_OUTPUT=standalone npm run build`, puis exécution de `server.js` avec `public` et `.next/static` copiés, comme dans le Dockerfile.

@@ -1,4 +1,5 @@
 import { formaterDate } from "./jour.ts";
+import { URL_SITE } from "./site.ts";
 import type { Resultat, ResultatsDuJour } from "./stockage.ts";
 
 export function formaterTemps(secondes: number) {
@@ -23,5 +24,6 @@ export function texteResume(date: string, jour: ResultatsDuJour, serie: number) 
     ([1, 2, 3] as const).map((n) => emoji(jour[n])).join(""),
     ...lignes,
     `${points} points${serie > 0 ? ` · série de ${serie} jour${serie > 1 ? "s" : ""}` : ""}`,
+    URL_SITE,
   ].join("\n");
 }
