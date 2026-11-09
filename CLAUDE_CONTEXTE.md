@@ -89,6 +89,10 @@ Décisions prises par Claude (à valider) :
 - Étape 4 : la sauvegarde qui suit une partie remplaçait l'écran en cours par la carte « déjà jouée » (le résultat devenait une prop). Corrigé : `DefiJeu` fige `deja` au montage.
 - Étape 4 : le test unitaire du golf avait un cas à 1 étoile qui donnait en réalité 2 (rapport 1,58 avec le HTML compté). Cas du test corrigé, pas la règle.
 - Étape 4 : Playwright, avec l'horloge simulée, affiche « Blocked script execution in 'about:srcdoc' » dans la console : c'est le script d'horloge de Playwright injecté dans les iframes sans `allow-scripts`. Ce n'est pas un bug du jeu (0 erreur sans horloge simulée).
+- Modif demandée par l'utilisateur (après l'étape 5) :
+  - La validation ignore les couleurs (fond, bordure, couleur du texte). Seules comptent la forme, la position, la taille, l'arrondi, l'opacité et la présence de texte. Test ajouté dans `lib/rendu.test.ts`.
+  - Niveaux 2 et 3 : après un appui sur Valider, le bouton reste bloqué 5 s (« Attends N s »). Niveau 1 : pas de délai.
+  - Vérifié dans le navigateur (build de production) : « Valider » → « Attends 5 s » → décompte → « Valider » après 5 s.
 - Étape 5 : `create-next-app` avait créé un dépôt git local avec son propre commit initial. Supprimé (jamais poussé) et remplacé par un dépôt initialisé sur le commit initial distant, pour que `master` distant et local aient la même histoire.
 - Étape 5 : l'API Coolify refuse le tiret long « — » dans la description d'un projet (422). Description sans tiret long.
 - Étape 5 : Docker n'est pas installé sur cette machine, l'image n'a donc pas été construite. À la place : `NEXT_OUTPUT=standalone npm run build`, puis exécution de `server.js` avec `public` et `.next/static` copiés, comme dans le Dockerfile.

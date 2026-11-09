@@ -125,19 +125,17 @@ const rayonPx = (r: string, b: Boite) => {
   return Math.min(px, b.w / 2, b.h / 2);
 };
 
+// Les couleurs (fond, bordure, texte) ne sont pas comparées : seules forme, position et présence comptent.
 function correspond(c: Boite, j: Boite) {
   return (
     proche(c.x, j.x) &&
     proche(c.y, j.y) &&
     proche(c.w, j.w) &&
     proche(c.h, j.h) &&
-    c.bg === j.bg &&
     proche(c.bord, j.bord, 1) &&
-    (c.bord === 0 || c.bc === j.bc) &&
     proche(rayonPx(c.rad, c), rayonPx(j.rad, j)) &&
     proche(c.op, j.op, 0.05) &&
-    c.texte === j.texte &&
-    c.color === j.color
+    c.texte === j.texte
   );
 }
 
