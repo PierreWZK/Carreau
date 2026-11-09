@@ -38,6 +38,8 @@ export default function DefiJeu({ defi, date, enDirect, deja: dejaRecu }: Props)
   const [indiceVu, setIndiceVu] = useState(false);
   const [message, setMessage] = useState("");
   const [occupe, setOccupe] = useState(false);
+  // Niveaux 2 et 3 : 5 s d'attente entre deux appuis sur Valider.
+  const [reste, setReste] = useState(0);
   // Aperçu en direct (niveaux 1 et 2) : retardé de 300 ms pour ne pas recharger à chaque touche.
   const [differe, setDiffere] = useState<Code>(code);
   // Niveau 3 : rendu du dernier code validé.
@@ -49,13 +51,20 @@ export default function DefiJeu({ defi, date, enDirect, deja: dejaRecu }: Props)
   }, []);
 
   useEffect(() => {
+    if (reste <= 0) return;
+    const minuteur = setTimeout(() => setReste((r) => r - 1), 1000);
+    return () => clearTimeout(minuteur);
+  }, [reste]);
+
+  useEffect(() => {
     if (defi.niveau === 3) return;
     const minuteur = setTimeout(() => setDiffere(code), 300);
     return () => clearTimeout(minuteur);
   }, [code, defi.niveau]);
 
   async function valider() {
-    if (occupe || resultat) return;
+    if (occupe || resultat || reste > 0) return;
+    if (defi.niveau !== 1) setReste(5);
     setOccupe(true);
     try {
       const [cible, joueur] = await Promise.all([
@@ -160,8 +169,13 @@ export default function DefiJeu({ defi, date, enDirect, deja: dejaRecu }: Props)
           </div>
 
           <div className={styles.actions}>
-            <button type="button" className={styles.valider} onClick={valider} disabled={occupe || termine}>
-              {occupe ? "Mesure…" : "Valider"}
+            <button
+              type="button"
+              className={styles.valider}
+              onClick={valider}
+              disabled={occupe || termine || reste > 0}
+            >
+              {occupe ? "Mesure…" : reste > 0 ? `Attends ${reste} s` : "Valider"}
             </button>
             <button type="button" className={styles.onglet} onClick={() => setIndiceVu(true)} disabled={termine || indiceVu}>
               {indiceVu ? "Indice vu" : `Indice (−${PENALITE_INDICE} points)`}

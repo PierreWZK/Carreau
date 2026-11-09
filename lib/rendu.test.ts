@@ -35,6 +35,12 @@ test("50% et rayon énorme : équivalents", () => {
   assert.equal(comparer([[a]], [[b]]).ok, true);
 });
 
+test("couleur différente : accepté", () => {
+  const cible = boite({ bg: "rgb(169, 184, 135)" });
+  const joueur = boite({ bg: "rgb(46, 61, 40)" });
+  assert.equal(comparer([[cible]], [[joueur]]).ok, true);
+});
+
 test("boîte en trop ou manquante : refusé", () => {
   assert.equal(comparer([[boite()]], [[boite(), boite({ x: 100 })]]).ecarts, 1);
   assert.equal(comparer([[boite(), boite({ x: 100 })]], [[boite()]]).ecarts, 1);
