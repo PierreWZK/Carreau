@@ -1,0 +1,49 @@
+.carte {
+  padding: 16px;
+  background: #f4f5ee;
+  border: 2px solid var(--vert-foncé);
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 var(--vert-clair);
+}
+
+.titre {
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.liste {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 16px;
+}
+
+.liste dt {
+  opacity: 0.8;
+}
+
+.liste dd {
+  font-weight: 700;
+}
+
+.solution {
+  margin-top: 12px;
+}
+
+.solution summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.solution pre {
+  margin-top: 8px;
+  padding: 12px;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  background: var(--papier);
+  border: 2px solid var(--vert-foncé);
+  border-radius: 8px;
+}

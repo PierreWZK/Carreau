@@ -1,0 +1,84 @@
+.page {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 24px var(--gouttiere) 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.entete {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.titre {
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.date {
+  font-size: 0.95rem;
+  text-transform: capitalize;
+  opacity: 0.8;
+}
+
+.intro {
+  font-size: 1rem;
+}
+
+.liste {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.carte {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: #f4f5ee;
+  border: 2px solid var(--vert-foncé);
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 var(--vert-clair);
+}
+
+.numero {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--vert-clair);
+  font-weight: 800;
+}
+
+.carteTitre {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.carteAide {
+  display: block;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+@media (min-width: 640px) {
+  .page {
+    padding-top: 48px;
+  }
+
+  .titre {
+    font-size: 3rem;
+  }
+}

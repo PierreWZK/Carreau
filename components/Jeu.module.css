@@ -1,0 +1,39 @@
+.page {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 16px var(--gouttiere) 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.lien {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 14px;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--vert-foncé);
+  background: #f4f5ee;
+  border: 2px solid var(--vert-foncé);
+  border-radius: 10px;
+}
+
+.archive {
+  padding: 8px 12px;
+  background: var(--vert-clair);
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.lien[aria-current="page"] {
+  background: var(--vert-clair);
+}

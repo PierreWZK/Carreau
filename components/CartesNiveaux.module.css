@@ -1,0 +1,65 @@
+.serie {
+  font-weight: 700;
+}
+
+.liste {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.carte {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  text-decoration: none;
+  color: inherit;
+  background: #f4f5ee;
+  border: 2px solid var(--vert-foncé);
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 var(--vert-clair);
+}
+
+.numero {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--vert-clair);
+  font-weight: 800;
+}
+
+.texte {
+  flex: 1;
+  min-width: 0;
+}
+
+.titre {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.aide {
+  display: block;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+.statut {
+  flex: 0 0 auto;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.archive {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  min-height: 44px;
+  font-weight: 700;
+}

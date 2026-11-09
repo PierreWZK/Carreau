@@ -1,0 +1,19 @@
+.date {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+.dur {
+  padding: 2px 10px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--papier);
+  background: var(--vert-foncé);
+  border-radius: 999px;
+}

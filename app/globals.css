@@ -1,0 +1,37 @@
+:root {
+  --papier: #e8e9df;
+  --vert-clair: #a9b887;
+  --vert-foncé: #2e3d28;
+  --trait: rgba(169, 184, 135, 0.45);
+  --carreau: 24px;
+  --gouttiere: 16px;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  color: var(--vert-foncé);
+  background-color: var(--papier);
+  background-image:
+    linear-gradient(var(--trait) 1px, transparent 1px),
+    linear-gradient(90deg, var(--trait) 1px, transparent 1px);
+  background-size: var(--carreau) var(--carreau);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+}

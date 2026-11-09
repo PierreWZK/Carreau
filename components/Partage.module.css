@@ -1,0 +1,37 @@
+.partage {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.titre {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.texte {
+  padding: 12px 16px;
+  overflow-x: auto;
+  font-family: inherit;
+  font-size: 0.95rem;
+  user-select: all;
+  background: #f4f5ee;
+  border: 2px solid var(--vert-foncé);
+  border-radius: 12px;
+}
+
+.bouton {
+  align-self: flex-start;
+  min-height: 44px;
+  padding: 0 16px;
+  font: inherit;
+  font-weight: 700;
+  color: var(--papier);
+  background: var(--vert-foncé);
+  border: 2px solid var(--vert-foncé);
+  border-radius: 10px;
+  box-shadow: 3px 3px 0 var(--vert-clair);
+  cursor: pointer;
+}
