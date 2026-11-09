@@ -1,0 +1,62 @@
+.liste {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.jour {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  padding: 12px 16px;
+  background: #f4f5ee;
+  border: 2px solid var(--vert-foncé);
+  border-radius: 12px;
+}
+
+.date {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+}
+
+.dur {
+  padding: 0 8px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--papier);
+  background: var(--vert-foncé);
+  border-radius: 999px;
+}
+
+.niveaux {
+  display: flex;
+  gap: 8px;
+}
+
+.niveau {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 10px;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--vert-foncé);
+  background: var(--papier);
+  border: 2px solid var(--vert-foncé);
+  border-radius: 10px;
+}
+
+.niveau[data-etat="réussi"] {
+  background: var(--vert-clair);
+}
+
+.niveau[data-etat="raté"] {
+  border-style: dashed;
+}
