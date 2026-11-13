@@ -2,9 +2,15 @@
 
 **Un défi CSS par jour.** Une cible s'affiche, tu la reproduis en HTML et en CSS. Trois niveaux chaque jour, plus durs le dimanche.
 
-**Jouer : [carreau.projectp.fr](https://carreau.projectp.fr)**
+🌐 **[carreau.projectp.fr](https://carreau.projectp.fr/)** · Jour 25 du défi **[30 jours, 30 projets](https://projectp.fr/)** · [Dépôt du défi](https://github.com/PierreWZK/30DaysProjects)
 
-Jour 25 du défi « 30 jours, 30 projets ».
+Stack : Next.js, React, TypeScript.
+
+[![Carreau, le défi CSS du jour](docs/preview-accueil.png)](https://carreau.projectp.fr/)
+
+<p align="center">
+  <img src="docs/preview-mobile.png" alt="Carreau sur téléphone" width="260">
+</p>
 
 | Accueil | Choix du niveau | Un défi (niveau 1) |
 | --- | --- | --- |
@@ -55,3 +61,14 @@ Les défis sont écrits à la main dans `lib/defis/` (20 par niveau, dont 4 « d
 `Dockerfile` en trois étapes (sortie Next.js `standalone`), port 3000. Déployé sur Coolify, branche `master`, à l'adresse [carreau.projectp.fr](https://carreau.projectp.fr).
 
 Le suivi détaillé du projet (demandes, décisions, tests, échecs) est dans `CLAUDE_CONTEXTE.md`.
+
+---
+
+## Le défi 30 jours, 30 projets
+
+Un projet complet par jour pendant 30 jours, chacun en ligne sur son propre sous-domaine.
+
+- 🗂️ **Tous les projets** : [projectp.fr](https://projectp.fr/)
+- 💻 **Le dépôt du défi** : [github.com/PierreWZK/30DaysProjects](https://github.com/PierreWZK/30DaysProjects)
+- ⬅️ **Jour précédent** : [Dactyle, jeu de frappe](https://dactyle.projectp.fr/)
+- ➡️ **Jour suivant** : [Drop, boutique éphémère](https://drop.projectp.fr/)
